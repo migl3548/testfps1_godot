@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwr8ojt767kfa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7jeoi"]
+
+[node name="Pistol" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+sprite_frames = SubResource("SpriteFrames_7jeoi")
