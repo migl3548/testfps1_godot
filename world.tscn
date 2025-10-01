@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4h61wnda4pdm"]
+[gd_scene load_steps=10 format=3 uid="uid://d4h61wnda4pdm"]
 
 [ext_resource type="PackedScene" uid="uid://cu2vt4dd76umh" path="res://player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://ky125qays7vt" path="res://Game.gd" id="1_fj7yv"]
+[ext_resource type="Script" uid="uid://bj1vjhv0fxjbv" path="res://crosshair.gd" id="3_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://cud5j1b171xve" path="res://Target.tscn" id="3_tlwt5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f3sb7"]
@@ -59,6 +60,22 @@ offset_bottom = 70.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 38
 text = "score: 0"
+
+[node name="Crosshair" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_aqk2v")
 
 [node name="Target" parent="." node_paths=PackedStringArray("wall") instance=ExtResource("3_tlwt5")]
 wall = NodePath("../Wall")
