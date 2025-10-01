@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4h61wnda4pdm"]
+[gd_scene load_steps=7 format=3 uid="uid://d4h61wnda4pdm"]
 
 [ext_resource type="PackedScene" uid="uid://cu2vt4dd76umh" path="res://player.tscn" id="1_f3sb7"]
 
@@ -14,6 +14,10 @@ background_mode = 2
 sky = SubResource("Sky_fj7yv")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f3sb7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fj7yv"]
 
 [node name="World" type="Node3D"]
 
@@ -33,7 +37,13 @@ collision_layer = 2
 size = Vector3(20, 0.5, 20)
 
 [node name="Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("BoxShape3D_f3sb7")
+debug_color = Color(0.478431, 0.537255, 1, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("BoxMesh_fj7yv")
