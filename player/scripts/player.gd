@@ -24,7 +24,27 @@ func _input(event) -> void:
 		head.rotation_degrees.x = pitch_deg
 		# (Optional) if pistol should tilt with head but is not a child of Head:
 		# pistol.rotation_degrees.x = pitch_deg
+		
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		shoot()
+		if pistol and pistol.has_method("play_shoot"):
+			pistol.play_shoot()
 
+func shoot() -> void:
+	var vp_pos = get_viewport().get_mouse_position()
+	var from = cam.project_ray_origin(vp_pos)
+	var dir  = cam.project_ray_normal(vp_pos)
+	var to   = from + dir * 2000.0
+
+	var space_state = get_world_3d().direct_space_state
+	var params = PhysicsRayQueryParameters3D.create(from, to)
+	var hit = space_state.intersect_ray(params)
+
+	if hit:
+		var col = hit.collider
+		if col and col.is_in_group("target"):
+			if col.has_method("on_shot"):
+				col.on_shot()
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -45,3 +65,5 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 	move_and_slide()
+	
+	
