@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const SPEED: float = 10.0
-const MOUSE_SENS: float = 0.1
+const MOUSE_SENS: float = 0.02
 const JUMP_VELOCITY = 4.5
 const PITCH_LIMIT: float = 89.0
 
